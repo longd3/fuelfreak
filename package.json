@@ -1,0 +1,18 @@
+{
+  "name": "TripViewer",
+  "description": "View and export trip data collected by Automatic",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.x",
+    "npm":  "1.3.x"
+  },
+  "dependencies": {
+      "express": "= 3.4.x"
+    , "request": "= 2.27.x"
+    , "underscore": "= 1.5.x"
+    , "jade": "0.x"
+    , "async": "0.2.x"
+    , "express-csv": "0.x"
+    , "moment": "2.4.x"
+  }
+}
