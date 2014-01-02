@@ -35,6 +35,7 @@ module.exports = function routes(app){
       try {
         res.json(JSON.parse(body));
       } catch(e) {
+        console.log("error: " + e);
         res.json(400, {"message": "Invalid access_token"});
       }
     });
