@@ -30,6 +30,7 @@ The app includes a `Procfile` and `package.json` which will enable [easy deploym
 
     heroku config:add AUTOMATIC_CLIENT_ID=<YOUR AUTOMATIC CLIENT ID>
     heroku config:add AUTOMATIC_CLIENT_SECRET=<YOUR AUTOMATIC CLIENT SECRET>
+    heroku config:add AUTOMATIC_AUTHORIZE_URL=https://www.automatic.com/oauth/authorize/
     heroku config:add AUTOMATIC_AUTH_TOKEN_URL=https://www.automatic.com/oauth/access_token/
 
     git push heroku master
