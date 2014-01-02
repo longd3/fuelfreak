@@ -171,6 +171,7 @@ module.exports = function routes(app){
             client_id: automaticAPI.automaticClientId
           , client_secret: automaticAPI.automaticClientSecret
           , code: req.query.code
+          , grant_type: 'authorization_code'
         }
       }, saveAuthToken)
     } else {
