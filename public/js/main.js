@@ -15,6 +15,7 @@ $(window).scroll(function() {
 });
 
 $('.display-type').click(function() {
+  showLoading();
   viewType = $(this).data('type');
   $(this).parent().addClass('active').siblings().removeClass('active')
   renderViewType();
@@ -109,6 +110,7 @@ function renderViewType() {
   } else if(viewType == 'table') {
     $('#trips .trip').not('.table').map(function(idx, div) { renderTable(div); });
   }
+  hideLoading();
 }
 
 
@@ -151,15 +153,15 @@ function renderTile(div) {
         .append($('<div>')
           .addClass('hardBrakes')
           .addClass(trip.hard_brakes > 0 ? 'someHardBrakes' : 'noHardBrakes')
-          .text(trip.hard_brakes || ''))
+          .html(trip.hard_brakes || '<i class="glyphicon glyphicon-ok"></i>'))
         .append($('<div>')
           .addClass('hardAccels')
           .addClass(trip.hard_accels > 0 ? 'someHardAccels' : 'noHardAccels')
-          .text(trip.hard_accels || ''))
+          .html(trip.hard_accels || '<i class="glyphicon glyphicon-ok"></i>'))
         .append($('<div>')
           .addClass('durationOver70')
           .addClass(formatSpeeding(trip.duration_over_70_s) > 0 ? 'someSpeeding' : 'noSpeeding')
-          .text(trip.duration_over_70_s || '')))
+          .html(Math.ceil(trip.duration_over_70_s/60) || '<i class="glyphicon glyphicon-ok"></i>')))
       .append($('<div>')
         .addClass('startLocation')
         .text(formatLocation(trip.start_location.name))))

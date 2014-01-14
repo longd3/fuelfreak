@@ -273,11 +273,11 @@ body {
 .trip.tile .hardBrakes {
   clear: both;
   float: left;
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
+  border-radius: 11px;
   font-weight: bold;
   box-sizing: border-box;
-  padding-top: 2px;
   text-align: center;
   margin-right: 115px;
   position: relative;
@@ -291,6 +291,7 @@ body {
   position: absolute;
   text-align: left;
   margin-left: 13px;
+  color: #777;
 }
 
 .trip.tile .hardBrakes.someHardBrakes::after {
@@ -298,20 +299,21 @@ body {
 }
 
 .trip.tile .hardBrakes.noHardBrakes {
-  background: url(/images/check-circle.png) 0 0 no-repeat;
+  color: #FFF;
+  background: #7fb75c;
 }
 
 .trip.tile .hardBrakes.someHardBrakes {
-  background: url(/images/warning-circle.png) 0 0 no-repeat;
+  background: #ffc701;
 }
 
 .trip.tile .hardAccels {
   float: left;
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
+  border-radius: 11px;
   font-weight: bold;
   box-sizing: border-box;
-  padding-top: 2px;
   text-align: center;
   margin-right: 115px;
   position: relative;
@@ -325,30 +327,27 @@ body {
   position: absolute;
   text-align: left;
   margin-left: 13px;
-}
-
-.trip.tile .hardAccels.someHardAccels::after {
-  margin-left: 10px;
+  color: #777;
 }
 
 .trip.tile .hardAccels.noHardAccels {
-  background: url(/images/check-circle.png) 0 0 no-repeat;
+  color: #FFF;
+  background: #7fb75c;
 }
 
 .trip.tile .hardAccels.someHardAccels {
-  background: url(/images/warning-circle.png) 0 0 no-repeat;
+  background: #ffc701;
 }
 
 .trip.tile .durationOver70 {
-  font-size: 11px;
   float: left;
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
   font-weight: normal;
   box-sizing: border-box;
-  padding-top: 5px;
   text-align: center;
   position: relative;
+  border-radius: 3px;
 }
 
 .trip.tile .durationOver70::after {
@@ -360,23 +359,23 @@ body {
   text-align: left;
   margin-left: 13px;
   width: 40px;
-  margin-top: -3px;
+  color: #777;
 }
 
 .trip.tile .durationOver70.someSpeeding::after {
   content: 'Min Over 70 MPH';
   color: #777;
   width: 42px;
-  margin-left: 6px;
 }
 
 .trip.tile .durationOver70.noSpeeding {
-  background: url(/images/check-square.png) 0 0 no-repeat;
+  background: #7fb75c;
+  color: #FFF
 }
 
 .trip.tile .durationOver70.someSpeeding {
   color: #FFF;
-  background: url(/images/warning-square.png) 0 0 no-repeat;
+  background: #fe8c0a;
 }
 
 .trip.tile .map {
@@ -386,8 +385,10 @@ body {
 }
 
 .loading {
+  text-align: center;
+  font-size: 20px;
   background: url(/images/loading.gif) center bottom no-repeat;
-  height: 100px;
+  height: 130px;
 }
 
 

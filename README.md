@@ -2,7 +2,7 @@
 
 ## View and export trip data collected by Automatic
 
-This is a node.js app that allows users to sign in using Automatic and view their trips.  It uses the Automatic API.
+A node.js app that allows users to view and export their trips taken using Automatic.  It uses the Automatic API.
 
 ## Demo
 
