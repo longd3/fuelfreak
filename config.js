@@ -1,22 +1,14 @@
 var express = require('express')
   , MemoryStore = express.session.MemoryStore
-  , store = new MemoryStore();
-
-try {
-  var keys = require('./keys');
-} catch(e) {
-}
+  , store = new MemoryStore()
+  , nconf = require('nconf');
 
 module.exports = function(app){
 
-  var automaticAPI = {
-      automaticClientId: process.env.AUTOMATIC_CLIENT_ID || keys.automaticClientId
-    , automaticClientSecret: process.env.AUTOMATIC_CLIENT_SECRET || keys.automaticClientSecret
-    , automaticAuthorizeUrl: process.env.AUTOMATIC_AUTHORIZE_URL || keys.automaticAuthorizeUrl
-    , automaticAuthTokenUrl: process.env.AUTOMATIC_AUTH_TOKEN_URL || keys.automaticAuthTokenUrl
-    , automaticScopes: 'scope:trip:summary scope:location scope:vehicle scope:notification:hard_accel scope:notification:hard_brake scope:notification:speeding'
-  }
-  app.set('automaticAPI', automaticAPI);
+  nconf.env().argv();
+  nconf.file('./config.json');
+
+  nconf.set('AUTOMATIC_SCOPES', 'scope:trip:summary scope:location scope:vehicle scope:notification:hard_accel scope:notification:hard_brake scope:notification:speeding');
 
   app.configure(function(){
     this

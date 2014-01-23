@@ -1,14 +1,16 @@
-var request = require('request'),
-    async = require('async'),
-    csv = require('express-csv'),
-    _ = require('underscore'),
-    moment = require('moment');
+var request = require('request')
+  , async = require('async')
+  , csv = require('express-csv')
+  , _ = require('underscore')
+  , moment = require('moment')
+  , nconf = require('nconf');
 
 module.exports = function routes(app){
 
-  var automaticAPI = app.get('automaticAPI');
+  console.log()
 
   app.get('/', function(req, res) {
+    // req.session.access_token = "1007f4c05f571475bfb2cc44da00358e57b8a032"
     if(req.session && req.session.access_token) {
       res.render('app', {loggedIn: true});
     } else {
@@ -17,7 +19,7 @@ module.exports = function routes(app){
   });
 
   app.get('/authorize/', function(req, res) {
-      res.redirect(automaticAPI.automaticAuthorizeUrl + '?client_id=' + automaticAPI.automaticClientId + '&response_type=code&scope=' + automaticAPI.automaticScopes)
+      res.redirect(nconf.get('AUTOMATIC_AUTHORIZE_URL') + '?client_id=' + nconf.get('AUTOMATIC_CLIENT_ID') + '&response_type=code&scope=' + nconf.get('AUTOMATIC_SCOPES'))
   });
 
   app.get('/logout/', function(req, res) {
@@ -167,10 +169,10 @@ module.exports = function routes(app){
   app.get('/redirect/', function(req, res) {
     if(req.query.code) {
       request.post({
-        uri: automaticAPI.automaticAuthTokenUrl,
+        uri: nconf.get('AUTOMATIC_AUTH_TOKEN_URL'),
         form: {
-            client_id: automaticAPI.automaticClientId
-          , client_secret: automaticAPI.automaticClientSecret
+            client_id: nconf.get('AUTOMATIC_CLIENT_ID')
+          , client_secret: nconf.get('AUTOMATIC_CLIENT_SECRET')
           , code: req.query.code
           , grant_type: 'authorization_code'
         }

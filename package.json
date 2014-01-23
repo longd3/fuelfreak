@@ -14,5 +14,6 @@
     , "async": "0.2.x"
     , "express-csv": "0.x"
     , "moment": "2.5.x"
+    , "nconf": "0.6.x"
   }
 }
