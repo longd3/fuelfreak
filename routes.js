@@ -7,10 +7,7 @@ var request = require('request')
 
 module.exports = function routes(app){
 
-  console.log()
-
   app.get('/', function(req, res) {
-    // req.session.access_token = "1007f4c05f571475bfb2cc44da00358e57b8a032"
     if(req.session && req.session.access_token) {
       res.render('app', {loggedIn: true});
     } else {
