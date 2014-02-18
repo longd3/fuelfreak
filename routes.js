@@ -107,27 +107,27 @@ module.exports = function routes(app){
 
   function fieldNames() {
     return [
-      'vehicle',
-      'start location name',
-      'start location lat',
-      'start location lon',
-      'start location accuracy (meters)',
-      'start time',
-      'end location name',
-      'end location lat',
-      'end location lon',
-      'end location accuracy (meters)',
-      'end time',
-      'path',
-      'distance (meters)',
-      'hard accelerations',
-      'hard_brakes',
-      'duration over 80 mph (secs)',
-      'duration over 75 mph (secs)',
-      'duration over 70 mph (secs)',
-      'fuel cost (USD)',
-      'fuel volume (gal)',
-      'average mpg'
+      'Vehicle',
+      'Start Location Name',
+      'Start Location Lat',
+      'Start Location Lon',
+      'Start Location Accuracy (meters)',
+      'Start Time',
+      'End Location Name',
+      'End Location Lat',
+      'End Location Lon',
+      'End Location Accuracy (meters)',
+      'End Time',
+      'Path',
+      'Distance (mi)',
+      'Hard Accelerations',
+      'Hard Brakes',
+      'Duration Over 80 mph (secs)',
+      'Duration Over 75 mph (secs)',
+      'Duration Over 70 mph (secs)',
+      'Fuel Cost (USD)',
+      'Fuel Volume (gal)',
+      'Average MPG'
     ]
   }
 
@@ -146,13 +146,13 @@ module.exports = function routes(app){
       t.end_location.accuracy_m,
       formatTime(t.end_time, t.end_time_zone),
       t.path,
-      t.distance_m,
+      formatDistance(t.distance_m),
       t.hard_accels,
       t.hard_brakes,
       t.duration_over_80_s,
       t.duration_over_75_s,
       t.duration_over_70_s,
-      t.fuel_cost_usd,
+      formatFuelCost(t.fuel_cost_usd),
       t.fuel_volume_gal,
       t.average_mpg
     ]
@@ -170,6 +170,17 @@ module.exports = function routes(app){
 
   function formatVehicle(v) {
     return [(v.year || ''), (v.make || ''), (v.model || '')].join(' ');
+  }
+
+
+  function formatDistance(distance) {
+    //convert from m to mi
+    return (distance / 1609.34).toFixed(2);
+  }
+
+
+  function formatFuelCost(fuelCost) {
+    return '$' + fuelCost.toFixed(2);
   }
 
 
