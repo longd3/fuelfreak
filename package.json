@@ -13,7 +13,7 @@
     , "jade": "1.1.x"
     , "async": "0.2.x"
     , "express-csv": "0.x"
-    , "moment": "2.5.x"
+    , "moment-timezone": "0.0.3"
     , "nconf": "0.6.x"
   }
 }

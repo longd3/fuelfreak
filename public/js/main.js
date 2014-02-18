@@ -124,13 +124,13 @@ function renderTile(div) {
       .addClass('times')
       .append($('<div>')
         .addClass('endTime')
-        .html(moment(trip.end_time).format('h:mm A<br>M/D/YYYY')))
+        .html(formatTime(trip.end_time, trip.end_time_zone)))
       .append($('<div>')
         .addClass('duration')
         .text(formatDuration(trip.end_time - trip.start_time)))
       .append($('<div>')
         .addClass('startTime')
-        .html(moment(trip.start_time).format('h:mm A<br>M/D/YYYY')))
+        .html(formatTime(trip.start_time, trip.start_time_zone)))
       .append($('<div>')
         .addClass('tripLine')
         .html('<div></div><div></div>')))
@@ -201,10 +201,10 @@ function renderTable(div) {
       .html('<input type="checkbox" checked>'))
     .append($('<div>')
       .addClass('startTime')
-      .html(moment(trip.start_time).format('h:mm A M/D/YYYY')))
+      .html(formatTime(trip.start_time, trip.start_time_zone)))
     .append($('<div>')
       .addClass('endTime')
-      .html(moment(trip.end_time).format('h:mm A M/D/YYYY')))
+      .html(formatTime(trip.end_time, trip.end_time_zone)))
     .append($('<div>')
       .addClass('duration')
       .text(formatDuration(trip.end_time - trip.start_time)))
@@ -244,6 +244,14 @@ function showAlert(msg, type) {
 
 function hideAlert() {
   $('#alert').fadeOut();
+}
+
+function formatTime(time, timezone) {
+  if (timezone) {
+    return moment(time).tz(timezone).format('YYYY-M-D h:mm A');
+  } else {
+    return moment(time).format('YYYY-M-D h:mm A');
+  }
 }
 
 

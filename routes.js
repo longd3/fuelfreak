@@ -2,7 +2,7 @@ var request = require('request')
   , async = require('async')
   , csv = require('express-csv')
   , _ = require('underscore')
-  , moment = require('moment')
+  , moment = require('moment-timezone')
   , nconf = require('nconf');
 
 module.exports = function routes(app){
@@ -139,12 +139,12 @@ module.exports = function routes(app){
       t.start_location.lat,
       t.start_location.lon,
       t.start_location.accuracy_m,
-      moment(t.start_time).format('YYYY-M-D h:mm A'),
+      formatTime(t.start_time, t.start_time_zone),
       t.end_location.name,
       t.end_location.lat,
       t.end_location.lon,
       t.end_location.accuracy_m,
-      moment(t.end_time).format('YYYY-M-D h:mm A'),
+      formatTime(t.end_time, t.end_time_zone),
       t.path,
       t.distance_m,
       t.hard_accels,
@@ -157,6 +157,16 @@ module.exports = function routes(app){
       t.average_mpg
     ]
   }
+
+
+  function formatTime(time, timezone) {
+    if (timezone) {
+      return moment(time).tz(timezone).format('YYYY-M-D h:mm A');
+    } else {
+      return moment(time).format('YYYY-M-D h:mm A');
+    }
+  }
+
 
   function formatVehicle(v) {
     return [(v.year || ''), (v.make || ''), (v.model || '')].join(' ');
