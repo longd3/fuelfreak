@@ -66,6 +66,7 @@ module.exports = function routes(app){
         var tripsAsArray = trips.map(tripToArray);
         tripsAsArray.unshift(fieldNames());
 
+        res.setHeader('Content-disposition', 'attachment; filename=trips.csv');
         res.csv(tripsAsArray);
       });
     } catch(e) {
