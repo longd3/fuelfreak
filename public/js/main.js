@@ -124,13 +124,13 @@ function renderTile(div) {
       .addClass('times')
       .append($('<div>')
         .addClass('endTime')
-        .html(formatTime(trip.end_time, trip.end_time_zone)))
+        .html(formatTimeTile(trip.end_time, trip.end_time_zone)))
       .append($('<div>')
         .addClass('duration')
         .text(formatDuration(trip.end_time - trip.start_time)))
       .append($('<div>')
         .addClass('startTime')
-        .html(formatTime(trip.start_time, trip.start_time_zone)))
+        .html(formatTimeTile(trip.start_time, trip.start_time_zone)))
       .append($('<div>')
         .addClass('tripLine')
         .html('<div></div><div></div>')))
@@ -201,10 +201,10 @@ function renderTable(div) {
       .html('<input type="checkbox" checked>'))
     .append($('<div>')
       .addClass('startTime')
-      .html(formatTime(trip.start_time, trip.start_time_zone)))
+      .html(formatTimeTable(trip.start_time, trip.start_time_zone)))
     .append($('<div>')
       .addClass('endTime')
-      .html(formatTime(trip.end_time, trip.end_time_zone)))
+      .html(formatTimeTable(trip.end_time, trip.end_time_zone)))
     .append($('<div>')
       .addClass('duration')
       .text(formatDuration(trip.end_time - trip.start_time)))
@@ -246,11 +246,21 @@ function hideAlert() {
   $('#alert').fadeOut();
 }
 
-function formatTime(time, timezone) {
+
+function formatTimeTable(time, timezone) {
   if (timezone) {
-    return moment(time).tz(timezone).format('YYYY-M-D h:mm A');
+    return moment(time).tz(timezone).format('YYYY-MM-DD h:mm A');
   } else {
-    return moment(time).format('YYYY-M-D h:mm A');
+    return moment(time).format('YYYY-MM-DD h:mm A');
+  }
+}
+
+
+function formatTimeTile(time, timezone) {
+  if (timezone) {
+    return moment(time).tz(timezone).format('MMM D, YYYY<br> h:mm A');
+  } else {
+    return moment(time).format('MMM D, YYYY<br> h:mm A');
   }
 }
 

@@ -116,35 +116,35 @@ body {
 }
 
 .table .startTime {
-  width: 110px;
+  width: 129px;
 }
 
 .table .endTime {
-  width: 110px;
+  width: 129px;
 }
 
 .table .duration {
   width: 65px;
 }
 
-.table .startLocation {
-  width: 258px;
-}
-
+.table .startLocation,
 .table .endLocation {
-  width: 258px;
+  width: 238px;
 }
 
 .table .distance {
   width: 45px;
+  text-align: right;
 }
 
 .table .mpg {
   width: 45px;
+  text-align: right;
 }
 
 .table .fuelCost {
   width: 45px;
+  text-align: right;
 }
 
 .trip.tile {
@@ -175,7 +175,7 @@ body {
   width: 6px;
   height: 150px;
   background-color: #08b1d5;
-  right: 10px;
+  right: 0px;
   top: 16px;
 }
 
@@ -206,6 +206,7 @@ body {
 .trip.tile .startLocation,
 .trip.tile .endLocation {
   font-size: 18px;
+  padding-left: 10px;
 }
 
 .trip.tile .tripSummaryBox {

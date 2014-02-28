@@ -162,9 +162,9 @@ module.exports = function routes(app){
 
   function formatTime(time, timezone) {
     if (timezone) {
-      return moment(time).tz(timezone).format('YYYY-M-D h:mm A');
+      return moment(time).tz(timezone).format('YYYY-MM-DD h:mm A');
     } else {
-      return moment(time).format('YYYY-M-D h:mm A');
+      return moment(time).format('YYYY-MM-DD h:mm A');
     }
   }
 
