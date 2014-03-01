@@ -37,7 +37,7 @@ module.exports = function(app){
       .use(express.logger({buffer: 10000}))
       .use(express.errorHandler())
       .enable('prod')
-      .set('domain', 'tripviewer.herokuapp.com');
+      .set('domain', 'fuelfreak.herokuapp.com');
 
     app.all('*',function(req, res, next) {
       if(req.headers['x-forwarded-proto'] != 'https') {
